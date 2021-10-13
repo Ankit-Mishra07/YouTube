@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin:0px;
+            padding:0px;
+            box-sizing: border-box;
+        }
+        a {
+            text-decoration: none;
+            color:black;
+        }
+
+        #nav {
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            padding:5px 3% 5px 5%;
+            border-bottom: 1px solid grey;
+        }
+        .logo-box {
+            width:100px;
+            height:60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+     
+        .logo-box img {
+            width:100%;
+            height:50px;
+        }
+        .search-box {
+            width:50%;
+
+        }
+        .search-box input {
+            width:75%;
+            padding:10px;
+            border:1px solid grey;
+        }
+        .icon-box {
+            width:15%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .icon-box img {
+            width:40px;
+            height:40px;
+            border-radius: 50%;
+        }
+
+
+
+        #side-nav {
+            position: absolute;
+            width:5%;
+            /* border:1px solid red; */
+            height:100%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding:5px;
+        }
+        #side-nav p {
+            font-size: 10px;
+        }
+        #side-nav a {
+            margin-top: 30px;
+        }
+        #horiline {
+            background-color: white;
+            font-size: 25px;
+            border:none;
+            margin-top: 14px;
+        }
+
+
+        #side-div {
+            display:none;
+            border: 1px solid rgb(224, 221, 221);
+            width:15%;
+            position:fixed;
+            background-color: white;
+            top:70px;
+            padding:5px;
+            height:100%;
+        }
+        #side-div a {
+            margin:2px 24px;
+        }
+    
+
+        #videos {
+            background-color: #ece9e9;
+            width:95%;
+            padding:1.5%;
+            margin-left: 5%;
+
+        }
+
+        #video-data {
+            display: flex;
+        }
+        </style>
+</head>
+<body>
+    <div id="side-nav">
+        
+        <button class="w3-button w3-teal w3-xlarge" onclick="dikhaobar()" id="horiline">☰</button>
+        <a href="index.html"><i class="fa fa-home" style="font-size: 25px;"></i></a>
+        <p>Home</p>
+        <a href="#"></a><i style='font-size:24px' class='fab'>&#xf39f;</i></a>
+        <p>Explore</p>
+       <a href="#"><i style='font-size:24px' class='fas'>&#xf65e;</i></a>
+       <p>Subscriptions</p>
+       <a href="#"><i style='font-size:24px' class='fas'>&#xf65e;</i></a>
+       <p>Library</p>
+    </div>
+<!-- side div -->
+
+    <div id="side-div">
+        <span>
+        <a href="index.html"><i class="fa fa-home" style="font-size: 25px;"></i></a>
+        <span>Home</span> </span> <br> <br>
+
+        <span>
+        <a href="#"><i class="material-icons">&#xe87a;</i></a>
+        <span>Explore</span> </span> <br> <br>
+
+        <span>
+        <a href="#"><i style='font-size:24px' class='fas'>&#xf65e;</i></a>
+        <span>Subscriptions</span> </span><br> 
+        <hr>
+        
+        <span>
+            <a href="#"><i class="material-icons">&#xe889;</i></a>
+            <span>History</span>
+        </span> <br><br>
+
+        <span>
+            <a href="#"><i style='font-size:22px' class='far'>&#xf302;</i></a>
+            <span>Your videos</span>
+        </span><br><br>
+
+        <span>
+            <a href="#"><i style='font-size:24px' class='fas'>&#xf2f2;</i></a>
+            <span>Watch Later</span>
+        </span><br><br>
+
+        <span>
+            <a href="#"><i style='font-size:24px' class='far'>&#xf164;</i></a>
+            <span>Liked videos</span>
+        </span><br><br>
+
+        <span>
+            <a href="#"><i style='font-size:24px' class='fas'>&#xf519;</i></a>
+            <span>Mix-Adda247</span>
+        </span><br>
+
+        <hr>
+
+
+    </div>
+
+<!-- side div end -->
+
+
+    <nav id="nav">
+        <div class="logo-box">
+            
+            <img src="https://www.bing.com/th?id=AMMS_61666e9ecf8ab8627d000fd91fee1452&w=188&h=132&c=7&o=6&oif=webp&pid=SANGAM" alt="there could be logo">
+            
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search" id="search">
+            <a href="#" ><button class="search_btn" onclick="showResult()"><i class="fas fa-search" style="padding:10px 15px;font-size: 16px;background-color: white;color:grey;"></button></i></a>
+            <i style='font-size:24px' class='fas'>&#xf130;</i>
+        </div>
+
+        <div class="icon-box">
+            <i style="font-size:24px" class="fa">&#xf03d;</i>
+            <span class="glyphicon">&#xe011;</span>
+            <i style="font-size:24px" class="fa">&#xf0a2;</i>
+            <img src="C:\Users\Ankit Mishra\Downloads\WhatsApp Image 2021-10-10 at 4.29.25 PM.jpeg" alt="my image">
+        </div>
+    </nav>
+
+    <div id="videos"></div>
+</body>
+</html>
+
+<script>
+
+    
+
+
+let videos = document.getElementById("videos")
+
+async function GetResult(){
+    let getvalue = JSON.parse(localStorage.getItem("youtubeinput"))
+    let query = getvalue[getvalue.length-1]
+    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyBAvAB7WoROuCm1VPnuRlz5W0haOhnSY_g&maxResults=20`)
+    let data = await res.json()
+    appendVideos(data.items)
+}
+GetResult()
+function appendVideos(video_data) {
+
+    videos.innerHTML = null
+
+    video_data.forEach(({ id:{ videoId }, snippet: { title ,description }}) => {
+
+        let main = document.createElement("div")
+        main.setAttribute("id" , "video-data")
+        
+        let div = document.createElement("div")
+
+        div.innerHTML = `<iframe width="100%" height="200" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+        
+        let textdiv = document.createElement("div")
+
+        let name = document.createElement("p")
+        name.textContent = title
+
+        let des = document.createElement("p")
+        des.textContent = description
+
+        textdiv.append(name,des)
+
+        main.append(div,textdiv)
+    
+        videos.append(main)
+    })
+}
+
+function showResult() {
+    let search = document.getElementById("search").value
+
+    let store = JSON.parse(localStorage.getItem("youtubeinput"))
+
+    store.push(search)
+
+    localStorage.setItem("youtubeinput" , JSON.stringify(store))
+}
+
+function dikhaobar() {
+
+    let side_div = document.getElementById("side-div")
+
+    side_div.style.display = "block"
+
+    let videos = document.getElementById("videos")
+
+    videos.style.width="85%"
+    videos.style.marginLeft = "15%"
+}
+
+let side_div = document.getElementById("side-div")
+side_div.addEventListener("click", hidediv)
+
+function hidediv() {
+    side_div.style.display = "none"
+
+    let videos = document.getElementById("videos")
+
+
+    videos.style.width="95%"
+    videos.style.marginLeft = "5%"
+}
+
+</script>
