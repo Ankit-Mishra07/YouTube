@@ -10,23 +10,33 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         * {
             margin:0px;
             padding:0px;
             box-sizing: border-box;
         }
+        a {
+            text-decoration: none;
+            color:black;
+        }
+
         #nav {
             display:flex;
             justify-content: space-between;
             align-items: center;
-            padding:5px 3% 5px 6%;
+            padding:5px 3% 5px 5%;
             border-bottom: 1px solid grey;
         }
         .logo-box {
             width:100px;
             height:60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
+     
         .logo-box img {
             width:100%;
             height:50px;
@@ -51,17 +61,133 @@
             height:40px;
             border-radius: 50%;
         }
+
+
+
+        #side-nav {
+            position: absolute;
+            width:5%;
+            /* border:1px solid red; */
+            height:100%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding:5px;
+        }
+        #side-nav p {
+            font-size: 10px;
+        }
+        #side-nav a {
+            margin-top: 30px;
+        }
+        #horiline {
+            background-color: white;
+            font-size: 25px;
+            border:none;
+            margin-top: 14px;
+        }
+
+
+        #side-div {
+            display:none;
+            border: 1px solid rgb(224, 221, 221);
+            width:15%;
+            position:fixed;
+            background-color: white;
+            top:70px;
+            padding:5px;
+            height:100%;
+        }
+        #side-div a {
+            margin:2px 24px;
+        }
+    
+
+        #popular-videos {
+            background-color: #ece9e9;
+            width:95%;
+            display: grid;
+            padding:1.5%;
+            grid-template-columns: repeat(4,24.1%);
+            grid-gap:1.5%;
+            margin-left: 5%;
+
+        }
     </style>
 </head>
 <body>
+
+    <div id="side-nav">
+        
+        <button class="w3-button w3-teal w3-xlarge" onclick="dikhaobar()" id="horiline">☰</button>
+        <a href="index.html"><i class="fa fa-home" style="font-size: 25px;"></i></a>
+        <p>Home</p>
+        <a href="#"></a><i style='font-size:24px' class='fab'>&#xf39f;</i></a>
+        <p>Explore</p>
+       <a href="#"><i style='font-size:24px' class='fas'>&#xf65e;</i></a>
+       <p>Subscriptions</p>
+       <a href="#"><i style='font-size:24px' class='fas'>&#xf65e;</i></a>
+       <p>Library</p>
+    </div>
+<!-- side div -->
+
+    <div id="side-div">
+        <span>
+        <a href="index.html"><i class="fa fa-home" style="font-size: 25px;"></i></a>
+        <span>Home</span> </span> <br> <br>
+
+        <span>
+        <a href="#"><i class="material-icons">&#xe87a;</i></a>
+        <span>Explore</span> </span> <br> <br>
+
+        <span>
+        <a href="#"><i style='font-size:24px' class='fas'>&#xf65e;</i></a>
+        <span>Subscriptions</span> </span><br> 
+        <hr>
+        
+        <span>
+            <a href="#"><i class="material-icons">&#xe889;</i></a>
+            <span>History</span>
+        </span> <br><br>
+
+        <span>
+            <a href="#"><i style='font-size:22px' class='far'>&#xf302;</i></a>
+            <span>Your videos</span>
+        </span><br><br>
+
+        <span>
+            <a href="#"><i style='font-size:24px' class='fas'>&#xf2f2;</i></a>
+            <span>Watch Later</span>
+        </span><br><br>
+
+        <span>
+            <a href="#"><i style='font-size:24px' class='far'>&#xf164;</i></a>
+            <span>Liked videos</span>
+        </span><br><br>
+
+        <span>
+            <a href="#"><i style='font-size:24px' class='fas'>&#xf519;</i></a>
+            <span>Mix-Adda247</span>
+        </span><br>
+
+        <hr>
+
+
+    </div>
+
+<!-- side div end -->
+
+
     <nav id="nav">
         <div class="logo-box">
+            
             <img src="https://www.bing.com/th?id=AMMS_61666e9ecf8ab8627d000fd91fee1452&w=188&h=132&c=7&o=6&oif=webp&pid=SANGAM" alt="there could be logo">
             
         </div>
         <div class="search-box">
             <input type="text" placeholder="Search" id="search">
-            <a href="#" ><button class="search_btn"><i class="fas fa-search" style="padding:10px 15px;font-size: 16px;background-color: white;color:grey;"></button></i></a>
+            <a href="#" ><button class="search_btn" onclick="showResult()"><i class="fas fa-search" style="padding:10px 15px;font-size: 16px;background-color: white;color:grey;"></button></i></a>
             <i style='font-size:24px' class='fas'>&#xf130;</i>
         </div>
 
@@ -72,5 +198,80 @@
             <img src="C:\Users\Ankit Mishra\Downloads\WhatsApp Image 2021-10-10 at 4.29.25 PM.jpeg" alt="my image">
         </div>
     </nav>
+    <div id="popular-videos"></div>
 </body>
 </html>
+
+<script>
+
+// https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&regionCode=US&key=[YOUR_API_KEY]
+   
+let popular_videos = document.getElementById("popular-videos")
+
+async function showpopular() {
+
+    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&regionCode=US&key=AIzaSyBAvAB7WoROuCm1VPnuRlz5W0haOhnSY_g`)
+    let data = await res.json()
+    let videoid = data.items
+    appendVideos(videoid)
+
+
+}
+
+showpopular()
+
+
+function appendVideos(videos) {
+    popular_videos.innerHTML = null
+    videos.forEach(function({ id, snippet:{ title } }){
+        
+        let maindiv = document.createElement("div")
+        let div = document.createElement("div")
+        div.innerHTML = `<iframe width="100%" height="200" src="https://www.youtube.com/embed/${id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+        maindiv.append(div,title)
+        popular_videos.append(maindiv)
+    })
+}
+
+
+
+if(localStorage.getItem("youtubeinput") === null) {
+    localStorage.setItem("youtubeinput" , JSON.stringify([]))
+}
+
+function showResult() {
+    let search = document.getElementById("search").value
+
+    let store = JSON.parse(localStorage.getItem("youtubeinput"))
+
+    store.push(search)
+
+    localStorage.setItem("youtubeinput" , JSON.stringify(store))
+}
+
+function dikhaobar() {
+
+    let side_div = document.getElementById("side-div")
+
+    side_div.style.display = "block"
+
+    let videos = document.getElementById("popular-videos")
+
+    videos.style.width="85%"
+    videos.style.marginLeft = "15%"
+}
+
+let side_div = document.getElementById("side-div")
+side_div.addEventListener("click", hidediv)
+
+function hidediv() {
+    side_div.style.display = "none"
+
+    let videos = document.getElementById("popular-videos")
+
+
+    videos.style.width="95%"
+    videos.style.marginLeft = "5%"
+}
+
+</script>
