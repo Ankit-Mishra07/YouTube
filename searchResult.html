@@ -224,7 +224,7 @@ let videos = document.getElementById("videos")
 async function GetResult(){
     let getvalue = JSON.parse(localStorage.getItem("youtubeinput"))
     let query = getvalue[getvalue.length-1]
-    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54&maxResults=1`)
+    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54&maxResults=20`)
     let data = await res.json()
     appendVideos(data.items)
 
@@ -278,7 +278,7 @@ function showResult() {
     async function GetResult(){
     let getvalue = JSON.parse(localStorage.getItem("youtubeinput"))
     let query = getvalue[getvalue.length-1]
-    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54&maxResults=1`)
+    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54&maxResults=20`)
     let data = await res.json()
     appendVideos(data.items)
 

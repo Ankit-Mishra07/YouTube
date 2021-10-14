@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home - YouTube</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -220,7 +220,7 @@ let popular_videos = document.getElementById("popular-videos")
 
 async function showpopular() {
 
-    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=1&regionCode=US&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54`)
+    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&regionCode=IN&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54`)
     let data = await res.json()
     let videoid = data.items
     appendVideos(videoid)
@@ -258,6 +258,10 @@ function showResult() {
     }
 
     localStorage.setItem("youtubeinput" , JSON.stringify(store))
+    setTimeout(()=> {
+        window.location.href = "searchResult.html"
+    },2000)
+   
 }
 
 function dikhaobar() {
