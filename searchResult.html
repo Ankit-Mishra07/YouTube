@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SearchResult-YouTube</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -46,9 +46,11 @@
 
         }
         .search-box input {
-            width:75%;
+            width:80%;
             padding:10px;
             border:1px solid grey;
+            border:0.5px solid lightgray;
+            border-right: none;
         }
         .icon-box {
             width:15%;
@@ -107,13 +109,22 @@
         #videos {
             background-color: #ece9e9;
             width:95%;
-            padding:1.5%;
+            padding:2% 3% 2% 5%;
             margin-left: 5%;
-
+            height: 100vh;
         }
-
+        #mike{
+            background-color: #eceaea;
+            margin-left: 14px;
+            padding:11px;
+            border-radius: 48%;
+            vertical-align: center;
+        }
+        
         #video-data {
             display: flex;
+            padding:20px;
+            
         }
         </style>
 </head>
@@ -187,8 +198,8 @@
         </div>
         <div class="search-box">
             <input type="text" placeholder="Search" id="search">
-            <a href="#" ><button class="search_btn" onclick="showResult()"><i class="fas fa-search" style="padding:10px 15px;font-size: 16px;background-color: white;color:grey;"></button></i></a>
-            <i style='font-size:24px' class='fas'>&#xf130;</i>
+            <button class="search_btn" onclick="showResult()" style="margin-left: 0px;"><i class="material-icons" style="width:60px;font-size: 20px;color:grey;margin:0px;padding: 8px;vertical-align:middle;background-color: rgb(250, 248, 248);">&#xe8b6;</i></button>
+            <i style='font-size:20px' class='fas' id="mike">&#xf130;</i>
         </div>
 
         <div class="icon-box">
@@ -213,25 +224,28 @@ let videos = document.getElementById("videos")
 async function GetResult(){
     let getvalue = JSON.parse(localStorage.getItem("youtubeinput"))
     let query = getvalue[getvalue.length-1]
-    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyBAvAB7WoROuCm1VPnuRlz5W0haOhnSY_g&maxResults=20`)
+    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54&maxResults=1`)
     let data = await res.json()
     appendVideos(data.items)
+
+    localStorage.setItem("youtubeinput" , JSON.stringify(getvalue))
 }
 GetResult()
 function appendVideos(video_data) {
 
     videos.innerHTML = null
 
-    video_data.forEach(({ id:{ videoId }, snippet: { title ,description }}) => {
+    video_data.forEach(function({ id:{ videoId }, snippet: { title ,description }}){
 
         let main = document.createElement("div")
         main.setAttribute("id" , "video-data")
         
         let div = document.createElement("div")
 
-        div.innerHTML = `<iframe width="100%" height="200" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+        div.innerHTML = `<iframe width="300" height="170" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
         
         let textdiv = document.createElement("div")
+        textdiv.style.marginLeft = "20px"
 
         let name = document.createElement("p")
         name.textContent = title
@@ -252,9 +266,54 @@ function showResult() {
 
     let store = JSON.parse(localStorage.getItem("youtubeinput"))
 
+    if(search !== "") {
     store.push(search)
+    }
 
     localStorage.setItem("youtubeinput" , JSON.stringify(store))
+
+
+
+
+    async function GetResult(){
+    let getvalue = JSON.parse(localStorage.getItem("youtubeinput"))
+    let query = getvalue[getvalue.length-1]
+    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54&maxResults=1`)
+    let data = await res.json()
+    appendVideos(data.items)
+
+    localStorage.setItem("youtubeinput" , JSON.stringify(getvalue))
+}
+GetResult()
+function appendVideos(video_data) {
+
+    videos.innerHTML = null
+
+    video_data.forEach(function({ id:{ videoId }, snippet: { title ,description }}){
+
+        let main = document.createElement("div")
+        main.setAttribute("id" , "video-data")
+        
+        let div = document.createElement("div")
+
+        div.innerHTML = `<iframe width="300" height="170" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+        
+        let textdiv = document.createElement("div")
+        textdiv.style.marginLeft = "20px"
+
+        let name = document.createElement("p")
+        name.textContent = title
+
+        let des = document.createElement("p")
+        des.textContent = description
+
+        textdiv.append(name,des)
+
+        main.append(div,textdiv)
+    
+        videos.append(main)
+    })
+}
 }
 
 function dikhaobar() {
