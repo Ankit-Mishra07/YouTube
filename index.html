@@ -13,11 +13,12 @@
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         html {
-            scroll-behavior: smooth;
+            scroll-behavior: smooth
         }
-        /* body{
-            height:100%;
-        } */
+        body{
+        
+            background-color: #ece9e9;
+        }
         * {
             margin:0px;
             padding:0px;
@@ -34,6 +35,7 @@
             align-items: center;
             padding:5px 3% 5px 5%;
             border-bottom: 1px solid lightgray;
+            background-color: white;
         }
         .logo-box {
             width:100px;
@@ -120,7 +122,8 @@
             position:absolute;
             background-color: white;
             top:70px;
-            height:100%;
+            height:1600px;
+            
         }
         #side-div > span {
             display:flex;
@@ -147,7 +150,7 @@
             padding:10px 10px 10px 6%;
             overflow: auto;
             white-space: nowrap;
-
+            background-color: white;
             font-weight: bold;
             font-size: 12px;
             scroll-behavior: smooth;
@@ -176,7 +179,7 @@
             grid-template-columns: repeat(4,24.1%);
             grid-gap:1.5%;
             margin-left: 5%;
-            height:100vh;
+            height:100%;
         }
 
         #recentSearch {
@@ -298,13 +301,57 @@
             <span style="margin-left: 20px;">T-Series </span>
         </a>
         </span>
+        <hr>
+        <p style="font-weight: bold;color: grey;margin-left: 25px;">MORE FROM YOUTUBE</p>
         <span>
-        <a href="https://www.youtube.com/c/BBKiVines" style="text-decoration: none; color:black" class="subsribed">
-            <img src="https://yt3.ggpht.com/ytc/AKedOLSJEH6QDhvuPpPuSsXTXcUuEE9YCXo6x5W28pvdCQ=s88-c-k-c0x00ffffff-no-rj" alt="" class="mysubs_img">
-            <span style="margin-left: 20px;">BB Ki Vines </span>
-        </a>
+            <a href="index.html"><i style="font-size:24px" class="fa">&#xf16a;</i></a>
+            <span>YouTube Premium</span>
         </span>
+         <span>
+            <a href="/"><i class="material-icons">&#xe54d;</i></a>
+            <span>Movies</span>
+        </span>
+        
+        <span>
+            <a href="/"><i style='font-size:24px' class='fas'>&#xf11b;</i></a>
+            <span>Gaming</span>
+        </span>
+        
+        <span>
+            <a href="/"><i class="material-icons">&#xe639;</i></a>
+            <span>Live</span>
+        </span>
+        
+        <span>
+            <a href="/"><i style='font-size:24px' class='fab'>&#xf396;</i></a>
+                <span>Fashion</span>
+        </span>
+        
+        <span>
+            <a href="/"><i style='font-size:24px' class='far'>&#xf0eb;</i></a>
+            <span>Learning</span>
+        </span>
+        <span>
+            <a href="/"><i style='font-size:24px' class='fas'>&#xf5ab;</i></a>
+            <span>Sports</span>
+        </span>
+         <span>
+            <a href="/"><i class="material-icons">&#xe8b8;</i></a>
+            <span>Setting</span>
+        </span>
+        <span>
+            <a href="/"><i style="font-size:24px" class="fa">&#xf11d;</i></a>
+            <span>Report & History</span>
+        </span>
+        <span>
+            <a href="/"><i class="material-icons">&#xe8fd;</i></a>
+            <span>Send Feedback</span>
+        </span>
+        <hr>
 
+        <p style="margin:5px 10px;color:grey">About Press Copyright Contact us Creators Advertise Developers
+            Terms Privacy Policy & Safety How YouTube worksTest new features <br>
+            © 2021 Google LLC</p>
     </div>
 
 <!-- side div end -->
@@ -409,7 +456,7 @@ async function showpopular() {
 
  }
 
- showpopular()
+ //showpopular()
 
 function appendVideos({ channelThumbnail,id, snippet:{ title,channelTitle ,publishedAt}, statistics:{viewCount}}) {
   //  popular_videos.innerHTML = null
