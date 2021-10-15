@@ -17,6 +17,10 @@
             padding:0px;
             box-sizing: border-box;
         }
+        body{
+        
+        background-color: #ece9e9;
+    }
         a {
             text-decoration: none;
             color:black;
@@ -27,7 +31,8 @@
             justify-content: space-between;
             align-items: center;
             padding:5px 3% 5px 5%;
-            border-bottom: 1px solid grey;
+            border-bottom: 1px solid lightgray;
+            background-color: white;
         }
         .logo-box {
             width:100px;
@@ -51,6 +56,9 @@
             border:1px solid grey;
             border:0.5px solid lightgray;
             border-right: none;
+        }
+        .search_btn {
+            border:1px solid lightgray
         }
         .icon-box {
             width:15%;
@@ -88,22 +96,78 @@
             font-size: 25px;
             border:none;
             margin-top: 14px;
+            border-radius: 50%;
+            padding:3px 6px;
         }
+        #horiline:hover {
+            background-color: lightgray;
+        }
+
+
+
+
+        
+        #link-box {
+            padding:10px 10px 10px 6%;
+            overflow: auto;
+            white-space: nowrap;
+            background-color: white;
+            font-weight: bold;
+            font-size: 12px;
+            scroll-behavior: smooth;
+        }
+        #link-box button {
+            padding:8px;
+            margin:0px 5px;
+            border-radius: 20px;
+            border:1px solid lightgray;
+        }
+        #link-box::-webkit-scrollbar {
+            display:none;
+        }
+        #link-box button:hover {
+            background-color: rgba(0, 0,0, 0.1);
+        }
+        #link-box button.active {
+            background: black;
+            color:white;
+        }
+
+
 
 
         #side-div {
             display:none;
             border: 1px solid rgb(224, 221, 221);
             width:15%;
-            position:fixed;
+            position:absolute;
             background-color: white;
             top:70px;
-            padding:5px;
-            height:100%;
+            height:1600px;
+            
+        }
+        #side-div > span {
+            display:flex;
+            align-items: center;
+            margin:0px;
+            padding: 7px;
+        }
+        #side-div > span:hover {
+            background-color: rgba(0, 0,0, 0.1);
         }
         #side-div a {
-            margin:2px 24px;
+            margin:1px 24px;
         }
+        .mysubs_img {
+            width:30px;
+            height:30px;
+            border-radius: 50%;
+        }
+        .subsribed {
+            margin-top: 30px;
+        }
+    
+
     
 
         #videos {
@@ -114,13 +178,12 @@
             height: 100vh;
         }
         #mike{
-            background-color: #eceaea;
+            background-color:rgb(233, 232, 232);
             margin-left: 14px;
             padding:11px;
             border-radius: 48%;
             vertical-align: center;
         }
-        
         #video-data {
             display: flex;
             padding:20px;
@@ -161,44 +224,136 @@
     <div id="side-div">
         <span>
         <a href="index.html"><i class="fa fa-home" style="font-size: 25px;"></i></a>
-        <span>Home</span> </span> <br> <br>
+        <span>Home</span> </span>
 
         <span>
         <a href="#"><i class="material-icons">&#xe87a;</i></a>
-        <span>Explore</span> </span> <br> <br>
+        <span>Explore</span> </span> 
 
         <span>
         <a href="#"><i style='font-size:24px' class='fas'>&#xf65e;</i></a>
-        <span>Subscriptions</span> </span><br> 
+        <span>Subscriptions</span> </span>
         <hr>
         
         <span>
             <a href="#"><i class="material-icons">&#xe889;</i></a>
             <span>History</span>
-        </span> <br><br>
+        </span> 
 
         <span>
             <a href="#"><i style='font-size:22px' class='far'>&#xf302;</i></a>
             <span>Your videos</span>
-        </span><br><br>
+        </span>
 
         <span>
             <a href="#"><i style='font-size:24px' class='fas'>&#xf2f2;</i></a>
             <span>Watch Later</span>
-        </span><br><br>
+        </span>
 
         <span>
             <a href="#"><i style='font-size:24px' class='far'>&#xf164;</i></a>
             <span>Liked videos</span>
-        </span><br><br>
+        </span>
 
         <span>
             <a href="#"><i style='font-size:24px' class='fas'>&#xf519;</i></a>
             <span>Mix-Adda247</span>
-        </span><br>
+        </span>
 
         <hr>
 
+        <hr>
+
+        <p style="font-weight: bold;color: grey;margin-left: 25px;">SUBSCRIPTIONS</p>
+
+        <span >
+        <a href="https://www.youtube.com/c/indiatoday" style="text-decoration: none; color:black" class="subsribed">
+            <img src="https://yt3.ggpht.com/ytc/AKedOLSt-tHE1CSHmihgq351JIiXq9-hdITBE4EYNGi2HQ=s88-c-k-c0x00ffffff-no-rj" alt="" class="mysubs_img">
+            <span style="margin-left: 20px;">India Today</span>
+        </a>
+        </span>
+        <span>
+        <a href="https://www.youtube.com/channel/UCk1ABHcE89lH5QAr_ZWd44w" style="text-decoration: none; color:black" class="subsribed">
+            <img src="https://yt3.ggpht.com/72lhThxFlRL7jGzrL3Qr8a5sgbqD-7WLsP6yWVYJhQJgmKj42R8HszsRMX6pncBvtcckZRpqHpo=s88-c-k-c0x00ffffff-no-rj" alt="" class="mysubs_img">
+            <span style="margin-left: 20px;">AKM Ideas</span>
+        </a>
+        </span>
+        <span>
+        <a href="https://www.youtube.com/c/EntrepreneurIndiaTV" style="text-decoration: none; color:black" class="subsribed">
+            <img src="https://yt3.ggpht.com/ytc/AKedOLRQLmhD2GnrvvbAMnEVG_V6cTPCxu_KrV-_B681gQ=s88-c-k-c0x00ffffff-no-rj" alt="" class="mysubs_img">
+            <span style="margin-left: 20px;">Entrepreneur</span>
+        </a>
+        </span>
+        <span>
+        <a href="https://www.youtube.com/c/LetsCrackGATEESEME" style="text-decoration: none; color:black" class="subsribed">
+            <img src="https://yt3.ggpht.com/ytc/AKedOLSt-tHE1CSHmihgq351JIiXq9-hdITBE4EYNGi2HQ=s88-c-k-c0x00ffffff-no-rj" alt="" class="mysubs_img">
+            <span style="margin-left: 20px;">LetsCrack</span>
+        </a>
+        </span>
+        <span>
+        <a href="https://www.youtube.com/c/SwanandKadam" style="text-decoration: none; color:black" class="subsribed">
+            <img src="https://yt3.ggpht.com/ytc/AKedOLRzCMe2SgPRi0ORApBYSHiTLXbv41h-iPFwgLKvW38=s88-c-k-c0x00ffffff-no-rj" alt="" class="mysubs_img">
+            <span style="margin-left: 20px;">Swanand Kadam</span>
+        </a>
+        </span>
+        <span>
+        <a href="https://www.youtube.com/aashiqui2" style="text-decoration: none; color:black" class="subsribed">
+            <img src="https://yt3.ggpht.com/ytc/AKedOLRDP1pDVWDoOU-AIR1vZdgWuEZCwH_4VleCz__65g8=s88-c-k-c0x00ffffff-no-rj" alt="" class="mysubs_img">
+            <span style="margin-left: 20px;">T-Series </span>
+        </a>
+        </span>
+        <hr>
+        <p style="font-weight: bold;color: grey;margin-left: 25px;">MORE FROM YOUTUBE</p>
+        <span>
+            <a href="index.html"><i style="font-size:24px" class="fa">&#xf16a;</i></a>
+            <span>YouTube Premium</span>
+        </span>
+         <span>
+            <a href="/"><i class="material-icons">&#xe54d;</i></a>
+            <span>Movies</span>
+        </span>
+        
+        <span>
+            <a href="/"><i style='font-size:24px' class='fas'>&#xf11b;</i></a>
+            <span>Gaming</span>
+        </span>
+        
+        <span>
+            <a href="/"><i class="material-icons">&#xe639;</i></a>
+            <span>Live</span>
+        </span>
+        
+        <span>
+            <a href="/"><i style='font-size:24px' class='fab'>&#xf396;</i></a>
+                <span>Fashion</span>
+        </span>
+        
+        <span>
+            <a href="/"><i style='font-size:24px' class='far'>&#xf0eb;</i></a>
+            <span>Learning</span>
+        </span>
+        <span>
+            <a href="/"><i style='font-size:24px' class='fas'>&#xf5ab;</i></a>
+            <span>Sports</span>
+        </span>
+         <span>
+            <a href="/"><i class="material-icons">&#xe8b8;</i></a>
+            <span>Setting</span>
+        </span>
+        <span>
+            <a href="/"><i style="font-size:24px" class="fa">&#xf11d;</i></a>
+            <span>Report & History</span>
+        </span>
+        <span>
+            <a href="/"><i class="material-icons">&#xe8fd;</i></a>
+            <span>Send Feedback</span>
+        </span>
+        <hr>
+
+        <p style="margin:5px 10px;color:grey">About Press Copyright Contact us Creators Advertise Developers
+            Terms Privacy Policy & Safety How YouTube worksTest new features <br>
+            © 2021 Google LLC</p>
+        
 
     </div>
 
@@ -230,6 +385,31 @@
         </div>
     </nav>
 
+    <div id="link-box">
+        <a href="index.html"><button>ALL</button></a>
+        <a href="/"><button>JavaScript</button></a>
+        <a href="/"><button>Website</button></a>
+        <a href="/"><button>Jethalal Champaklal Gada</button></a>
+        <a href="/"><button>Comedy</button></a>
+        <a href="/"><button>Programming</button></a>
+        <a href="/"><button>Recently Uploaded</button></a>
+        <a href="/"><button>Mixes</button></a>
+        <a href="/"><button>Courses</button></a>
+        <a href="/"><button>Martial Arts Movies</button></a>
+        <a href="/"><button>Thrillers</button></a>
+        <a href="/"><button>T-Series</button></a>
+        <a href="/"><button>Music</button></a>
+        <a href="/"><button>Bollywood Music</button></a>
+        <a href="/"><button>Science Fiction</button></a>
+        <a href="/"><button>General Knowledge</button></a>
+        <a href="/"><button>Live</button></a>
+        <a href="/"><button>MASAI SCHOOL</button></a>
+        <a href="/"><button>News</button></a>
+        <a href="/"><button>IPL</button></a>
+        <a href="/"><button>New to you</button></a>
+    </div>
+
+
     <div id="videos"></div>
 </body>
 </html>
@@ -250,7 +430,7 @@ async function GetResult(){
 
     localStorage.setItem("youtubeinput" , JSON.stringify(getvalue))
 }
-GetResult()
+//GetResult()
 function appendVideos(video_data) {
 
     videos.innerHTML = null
@@ -298,7 +478,7 @@ function showResult() {
     async function GetResult(){
     let getvalue = JSON.parse(localStorage.getItem("youtubeinput"))
     let query = getvalue[getvalue.length-1]
-    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54&maxResults=20`)
+    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54&maxResults=5`)
     let data = await res.json()
     appendVideos(data.items)
 
