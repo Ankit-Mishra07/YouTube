@@ -204,6 +204,51 @@
             width:45px;
             height: 45px;
         }
+        #profile-pic {
+            display:none;
+        } 
+        #profile-btn {
+            border:none;
+            background-color: white;
+        }
+        #profile-div {
+        
+            width:15%;
+            height:500px;
+            position: absolute;
+            background-color: white;
+            right:5%;
+            top:1%;
+            border:1px solid lightgray;
+            padding: 20px 10px;
+            
+        }
+        #profile-div input {
+            width:100%;
+            margin-top: 10px;
+            border:none;
+            border-bottom: 1px solid grey;
+        }
+        #profile-div button {
+            width:100%;
+            background-color: white;
+            border-radius: 5px;
+            padding:8px;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        #profile-div button:hover {
+            background-color: rgb(129, 2, 23);
+            color: white;
+        }
+        #profile-div {
+            display: none;
+        }
+        /* #profile-div img {
+            width:40px;
+            height:40px;
+            border-radius: 50%;
+        } */
     </style>
 </head>
 <body>
@@ -356,8 +401,9 @@
 
 <!-- side div end -->
 
-
-    <nav id="nav">
+<!-- navigation -->
+   
+<nav id="nav">
         <div class="logo-box">
             
             <img src="https://www.bing.com/th?id=AMMS_61666e9ecf8ab8627d000fd91fee1452&w=188&h=132&c=7&o=6&oif=webp&pid=SANGAM" alt="there could be logo">
@@ -380,9 +426,31 @@
             <i style="font-size:24px" class="fa">&#xf03d;</i>
             <span class="glyphicon">&#xe011;</span>
             <i style="font-size:24px" class="fa">&#xf0a2;</i>
-            <img src="C:\Users\Ankit Mishra\Downloads\WhatsApp Image 2021-10-10 at 4.29.25 PM.jpeg" alt="my image">
+            <button id="profile-btn" onclick="showProfile()"><i style="font-size:24px" class="fa">&#xf2bd;</i></button>
+            <img src="C:\Users\Ankit Mishra\Downloads\WhatsApp Image 2021-10-10 at 4.29.25 PM.jpeg" alt="my image" id="profile-pic">
         </div>
-    </nav>
+
+</nav>
+<!-- navigation end -->
+
+
+<!-- profile div -->
+
+<div id="profile-div">
+        
+    <h4 style="display: inline-block;"><u>Signup/Signin</u></h4><button onclick="hideprofile_div()" style="background-color: rgb(250, 25, 25);color: white;margin-left: 30px;width:30px;padding:5px;border-radius: 30px;">X</button>
+    <input type="text" placeholder="Username" id="user">
+    <input type="password" placeholder="password" id="pass">
+    <button onclick="login(event)">LOGIN</button>
+    <p style="text-align: center;margin-top: 20px;">Create an Account</p>
+    <a href="signup.html"><button>Signup</button></a>
+    
+    
+</div>
+
+<!-- profile-div end -->
+
+
 
     <div id="link-box">
         <a href="index.html"><button>ALL</button></a>
@@ -420,7 +488,7 @@ let popular_videos = document.getElementById("popular-videos")
 
 async function showpopular() {
 
-    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=1&regionCode=IN&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54`)
+    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&regionCode=IN&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54`)
     let data = await res.json()
     let videoid = data.items
     videoid.forEach((icon) => {
@@ -456,7 +524,7 @@ async function showpopular() {
 
  }
 
- //showpopular()
+ showpopular()
 
 function appendVideos({ channelThumbnail,id, snippet:{ title,channelTitle ,publishedAt}, statistics:{viewCount}}) {
   //  popular_videos.innerHTML = null
@@ -596,5 +664,94 @@ function dikhaobar() {
 //     videos.style.width="95%"
 //     videos.style.marginLeft = "5%"
 // }
+
+
+function showProfile() {
+
+    let profile_div = document.getElementById("profile-div")
+    profile_div.style.display = "block"
+
+    
+}
+
+function hideprofile_div() {
+    let profile_div = document.getElementById("profile-div")
+    profile_div.style.display = "none"
+}
+
+
+
+
+
+function login(event) {
+    event.preventDefault()
+
+    let username = document.getElementById("user")
+    let password = document.getElementById("pass")
+
+    let user_data = {
+            username:username.value,
+            password:password.value,
+    }
+
+    let data_to_send  = JSON.stringify(user_data)
+
+    fetch("https://masai-api-mocker.herokuapp.com/auth/login" , {
+
+    method:"POST",
+    body:data_to_send,
+    headers: {
+    "Content-Type" : "application/json"
+    },
+    })
+    .then((res) => {
+        return res.json()
+    })
+    .then((res) => {
+        console.log(res)
+        fetchmyData(user_data.username, res.token)
+    })
+    .catch((err) => {
+            console.log("err:", err)
+    })
+}
+
+function fetchmyData(username, token) {
+
+fetch(`https://masai-api-mocker.herokuapp.com/user/${username}` , {
+
+    headers: {
+        "Content-Type" : "application/json",
+        Authorization : `Bearer ${token}` ,
+    },
+})
+
+.then((res) => {
+
+return res.json()
+
+})
+.then((res) => {
+    successful()
+    console.log(res)
+
+})
+.catch((err) => {
+
+   console.log(err)
+})
+
+}
+
+function successful() {
+
+    let profile_btn = document.getElementById("profile-btn") 
+    profile_btn.style.display = "none"
+
+    let prof = document.getElementById("profile-pic")
+    prof.style.display = "block"
+
+ alert("LOGGED IN SUCCESSFULLY")
+}
 
 </script>
