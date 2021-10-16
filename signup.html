@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #signup {
+            border:1px solid lightgray;
+            margin: auto;
+            width:30%;
+            padding:20px;
+            background-color: honeydew;
+        }
+        #signup input {
+            margin-top: 20px;
+            border:none;
+            border-bottom: 1px solid grey;
+            padding:10px;
+            width:80%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1><u>Create an Account</u></h1>
+
+    <div id="signup">
+        <form action="" id="signup-form" onsubmit="Signup(event)">
+        <input type="text" id="name" placeholder="name"> <br>
+        <input type="email" id="email" placeholder="email"> <br>
+        <input type="password" id="password" placeholder="password"> <br>
+        <input type="text" id="username" placeholder="username"> <br>
+        <input type="number" id="mobile" placeholder="mobile"> <br>
+        <input type="text" id="description" placeholder="description"> <br>
+        <input type="submit" style="border-radius: 20px;">
+        </form>
+    
+    </div>
+</body>
+</html>
+
+<script>
+
+function Signup(event) {
+        event.preventDefault()
+
+        let form = document.getElementById("signup-form")
+
+        let user_data = {
+            name:form.name.value,
+            email:form.email.value,
+            password:form.password.value,
+            username:form.username.value,
+            mobile:form.mobile.value,
+            description:form.description.value,
+        }
+
+        user_data = JSON.stringify(user_data)
+
+        fetch("https://masai-api-mocker.herokuapp.com/auth/register" , {
+
+            method:"POST",
+            body:user_data,
+            headers: {
+                "Content-Type" : "application/json"
+            },
+
+        })
+
+        .then((res) => {
+
+            return res.json()
+
+        })
+        .then((res) => {
+            console.log("res:" , res);
+            backtohome()
+        })
+        .catch((err) => {
+            console.log("err:", err)
+        })
+
+    }
+
+
+    function backtohome() {
+        window.location.href = "index.html"
+    }
+</script>
