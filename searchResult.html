@@ -108,30 +108,19 @@
 
         
         #link-box {
-            padding:10px 10px 10px 6%;
-            overflow: auto;
-            white-space: nowrap;
-            background-color: white;
-            font-weight: bold;
-            font-size: 12px;
-            scroll-behavior: smooth;
+            padding:10px 10px 10px 10px;
+            font-weight: 600;
+            border-bottom: 1px solid lightgray;
+            margin:0px 11%;
         }
         #link-box button {
-            padding:8px;
-            margin:0px 5px;
-            border-radius: 20px;
-            border:1px solid lightgray;
-        }
-        #link-box::-webkit-scrollbar {
-            display:none;
+            padding:10px;
+            border:none;
         }
         #link-box button:hover {
             background-color: rgba(0, 0,0, 0.1);
         }
-        #link-box button.active {
-            background: black;
-            color:white;
-        }
+     
 
 
 
@@ -385,31 +374,13 @@
         </div>
     </nav>
 
+    <!-- filter -->
+
     <div id="link-box">
-        <a href="index.html"><button>ALL</button></a>
-        <a href="/"><button>JavaScript</button></a>
-        <a href="/"><button>Website</button></a>
-        <a href="/"><button>Jethalal Champaklal Gada</button></a>
-        <a href="/"><button>Comedy</button></a>
-        <a href="/"><button>Programming</button></a>
-        <a href="/"><button>Recently Uploaded</button></a>
-        <a href="/"><button>Mixes</button></a>
-        <a href="/"><button>Courses</button></a>
-        <a href="/"><button>Martial Arts Movies</button></a>
-        <a href="/"><button>Thrillers</button></a>
-        <a href="/"><button>T-Series</button></a>
-        <a href="/"><button>Music</button></a>
-        <a href="/"><button>Bollywood Music</button></a>
-        <a href="/"><button>Science Fiction</button></a>
-        <a href="/"><button>General Knowledge</button></a>
-        <a href="/"><button>Live</button></a>
-        <a href="/"><button>MASAI SCHOOL</button></a>
-        <a href="/"><button>News</button></a>
-        <a href="/"><button>IPL</button></a>
-        <a href="/"><button>New to you</button></a>
+        <button>ㅞ FILTERS</button>
     </div>
-
-
+<!-- 
+filter -->
     <div id="videos"></div>
 </body>
 </html>
@@ -424,13 +395,13 @@ let videos = document.getElementById("videos")
 async function GetResult(){
     let getvalue = JSON.parse(localStorage.getItem("youtubeinput"))
     let query = getvalue[getvalue.length-1]
-    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54&maxResults=20`)
+    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54&maxResults=10`)
     let data = await res.json()
     appendVideos(data.items)
 
     localStorage.setItem("youtubeinput" , JSON.stringify(getvalue))
 }
-//GetResult()
+GetResult()
 function appendVideos(video_data) {
 
     videos.innerHTML = null
@@ -478,7 +449,7 @@ function showResult() {
     async function GetResult(){
     let getvalue = JSON.parse(localStorage.getItem("youtubeinput"))
     let query = getvalue[getvalue.length-1]
-    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54&maxResults=5`)
+    let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=AIzaSyCrwp3vBIsFwdzpe3ZirxNViqzTahcvA54&maxResults=10`)
     let data = await res.json()
     appendVideos(data.items)
 
