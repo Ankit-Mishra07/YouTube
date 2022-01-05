@@ -45,6 +45,7 @@ a {
     border:1px solid grey;
     border:0.5px solid lightgray;
     border-right: none;
+    outline: none;
 }
 .search_btn {
     border:1px solid lightgray
